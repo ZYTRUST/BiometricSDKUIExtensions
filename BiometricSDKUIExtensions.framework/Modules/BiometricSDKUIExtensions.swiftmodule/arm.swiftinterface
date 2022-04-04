@@ -1,0 +1,351 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BiometricSDKUIExtensions
+import BiometricSDK
+@_exported import BiometricSDKUIExtensions
+import Foundation
+import Lottie
+import SpriteKit
+import Swift
+import UIKit
+extension PopTip {
+  public func performEntranceAnimation(completion: @escaping () -> Swift.Void)
+  public func performExitAnimation(completion: @escaping () -> Swift.Void)
+}
+@objc public enum PopupDirection : Swift.Int {
+  case up
+  case down
+  case left
+  case right
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol PopupProtocol {
+  @objc func show(withTitle title: Swift.String, direction: BiometricSDKUIExtensions.PopupDirection, in view: UIKit.UIView, from frame: CoreGraphics.CGRect)
+  @objc func hide()
+  @objc func configure(withStylesheet stylesheet: BiometricSDKUIExtensions.PopupStylesheet)
+}
+@objc(BIOGenericChallengeViewController) public class GenericChallengeViewController : UIKit.UIViewController {
+  @objc public var faceCaptureOptions: BiometricSDK.FaceCaptureOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var hintsViewEnabled: Swift.Bool
+  @objc public var timeoutViewEnabled: Swift.Bool
+  @objc public var timeBeforeCaptureStarts: Swift.Int
+  @objc weak public var captureDelegate: BiometricSDK.FaceCaptureHandlerDelegate?
+  @objc public var isCaptureStarted: Swift.Bool {
+    get
+    }
+  @objc public var minimumDevicePitch: Swift.Double
+  @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc public func restartChallenge(delay: Swift.Int = 0)
+  @objc public func finishChallenge(success: Swift.Bool, completion: (() -> ())? = nil)
+  @objc public func startIlluminationCheck(completionHandler: ((Swift.Error?) -> Swift.Void)?)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(BIOJoinThePointsStylesheet) public class JoinThePointsStylesheet : ObjectiveC.NSObject {
+  @available(*, deprecated, renamed: "nodeImage", message: "Use nodeImage instead.")
+  @objc public var nodeFillColor: UIKit.UIColor
+  @available(*, deprecated, renamed: "nodeImage", message: "Use nodeImage instead.")
+  @objc public var nodeStrokeColor: UIKit.UIColor
+  @available(*, deprecated, renamed: "nodeImage", message: "Use nodeImage instead.")
+  @objc public var nodeStrokeWidth: CoreGraphics.CGFloat
+  @objc public var nodeProgressColor: UIKit.UIColor
+  @objc public var nodeProgressWidth: CoreGraphics.CGFloat
+  @objc public var progressBarFillColor: UIKit.UIColor
+  @objc public var progressBarBackgroundColor: UIKit.UIColor
+  @objc public var hintsColor: UIKit.UIColor
+  @objc public var popupHintsColor: UIKit.UIColor
+  @objc public var startImage: UIKit.UIImage
+  @objc public var nodeImage: UIKit.UIImage?
+  @objc public var validImage: UIKit.UIImage
+  @objc public var invalidImage: UIKit.UIImage
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOConsecutiveJoinThePointsStylesheet) public class ConsecutiveJoinThePointsStylesheet : ObjectiveC.NSObject {
+  @objc final public let popupStylesheet: BiometricSDKUIExtensions.PopupStylesheet
+  @objc public var popupHintsColor: UIKit.UIColor
+  @objc final public let faceAnimationStylesheet: BiometricSDKUIExtensions.FaceAnimationStylesheet
+  @objc public var startNodeStrokeColor: UIKit.UIColor
+  @objc public var startNodeStrokeWidth: CoreGraphics.CGFloat
+  @objc public var startNodeFillColor: UIKit.UIColor
+  @objc public var startNodeSize: CoreGraphics.CGFloat
+  @objc public var nodeFont: UIKit.UIFont?
+  @objc public var nodeStrokeColor: UIKit.UIColor
+  @objc public var nodeFillColor: UIKit.UIColor
+  @objc public var nodeProgressColor: UIKit.UIColor
+  @objc public var hintImageTintColor: UIKit.UIColor
+  @objc public var nodeValidImage: UIKit.UIImage
+  @objc public var nodeInvalidImage: UIKit.UIImage
+  @objc public var lineFillColor: UIKit.UIColor
+  @objc public var lineStrokeColor: UIKit.UIColor
+  @objc public var lineDoneFillColor: UIKit.UIColor
+  @objc public var lineDoneStrokeColor: UIKit.UIColor
+  @objc public var lineStrokeWidth: CoreGraphics.CGFloat
+  @objc public var lineGapsWidth: CoreGraphics.CGFloat
+  @objc public var lineWidth: CoreGraphics.CGFloat
+  @objc public var lineMaxWidth: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOFaceAnimationStylesheet) public class FaceAnimationStylesheet : ObjectiveC.NSObject {
+  @objc public var upLeftAnimationName: Swift.String?
+  @objc public var upRightAnimationName: Swift.String?
+  @objc public var upFrontAnimationName: Swift.String?
+  @objc public var downLeftAnimationName: Swift.String?
+  @objc public var downRightAnimationName: Swift.String?
+  @objc public var downFrontAnimationName: Swift.String?
+  @objc public var sideLeftAnimationName: Swift.String?
+  @objc public var sideRightAnimationName: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOBasicLivenessStylesheet) public class BasicLivenessStylesheet : ObjectiveC.NSObject {
+  @objc public var hintsColor: UIKit.UIColor
+  @objc public var imageTintColor: UIKit.UIColor
+  @objc public var validColor: UIKit.UIColor
+  @objc public var invalidColor: UIKit.UIColor
+  @objc public var validImage: UIKit.UIImage
+  @objc public var invalidImage: UIKit.UIImage
+  @objc public var faceAnimationName: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOPopupStylesheet) public class PopupStylesheet : ObjectiveC.NSObject {
+  @objc public var textColor: UIKit.UIColor
+  @objc public var font: UIKit.UIFont
+  @objc public var backgroundColor: UIKit.UIColor
+  @objc public var shadowOpacity: Swift.Float
+  @objc public var shadowRadius: Swift.Float
+  @objc public var shadowOffset: CoreGraphics.CGSize
+  @objc public var shadowColor: UIKit.UIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOSDKUIExtensions) public class BIOSDKUIExtensions : ObjectiveC.NSObject {
+  @objc public static let joinThePointsStylesheet: BiometricSDKUIExtensions.JoinThePointsStylesheet
+  @objc public static let consecutiveJoinThePointsStylesheet: BiometricSDKUIExtensions.ConsecutiveJoinThePointsStylesheet
+  @objc public static let basicLivenessStylesheet: BiometricSDKUIExtensions.BasicLivenessStylesheet
+  @available(*, deprecated, message: "Moved the style to ConsecutiveJoinThePointsStylesheet.popupStylesheet as substyle.")
+  @objc public static var popupStylesheet: BiometricSDKUIExtensions.PopupStylesheet {
+    @objc get
+  }
+  @objc public static func makeBasicLivenessChallengeViewController() -> BiometricSDKUIExtensions.BasicLivenessChallengeViewController
+  @objc public static func makeJoinThePointsChallengeViewController() -> BiometricSDKUIExtensions.JoinThePointsChallengeViewController
+  @objc public static func makeConsecutiveJoinThePointsChallengeViewController() -> BiometricSDKUIExtensions.ConsecutiveJoinThePointsChallengeViewController
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOConsecutiveJoinThePointsChallengeViewController) public class ConsecutiveJoinThePointsChallengeViewController : BiometricSDKUIExtensions.GenericChallengeViewController {
+  @objc public var targetsNumber: Swift.UInt {
+    @objc get
+    @objc set
+  }
+  @objc public var captureTimeout: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var ignoredCaptureInfo: Swift.Set<BiometricSDK.BIOCapturingInfo>
+  @objc public var faceMovementGuideAnimationEnabled: Swift.Bool
+  @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @objc override dynamic public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@objc(BIOBasicLivenessChallengeViewController) public class BasicLivenessChallengeViewController : UIKit.UIViewController {
+  @objc public var previewBlurEffectStrongness: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc public var minimumDevicePitch: Swift.Double
+  @objc public var blurColor: UIKit.UIColor
+  @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc public func configure(captureHandler: BiometricSDK.FaceCaptureHandler)
+  @objc override dynamic public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @objc public func startCapture(delay: Swift.Int = 2, waitForUnlock: Swift.Bool = true, completionHandler: ((Swift.Error?) -> ())? = nil)
+  @objc public func handleCaptureInfo(info: BiometricSDK.BIOCapturingInfo, challengeInfo: BiometricSDK.BIOChallengeInfo?, error: Swift.Error?)
+  @objc public func handleCaptureIsLocked(seconds: Swift.Int)
+  @objc public func handleCaptureFinished(images: [BiometricSDK.BIOFaceImage]?, biometrics: BiometricSDK.BIOBiometrics?, error: Swift.Error?, animationDuration: Foundation.TimeInterval = 1, completionHandler: (() -> ())? = nil)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public enum PopTipDirection {
+  case up
+  case down
+  case left
+  case right
+  case none
+  public static func == (a: BiometricSDKUIExtensions.PopTipDirection, b: BiometricSDKUIExtensions.PopTipDirection) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PopTipEntranceAnimation {
+  case scale
+  case transition
+  case fadeIn
+  case custom
+  case none
+  public static func == (a: BiometricSDKUIExtensions.PopTipEntranceAnimation, b: BiometricSDKUIExtensions.PopTipEntranceAnimation) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PopTipExitAnimation {
+  case scale
+  case fadeOut
+  case custom
+  case none
+  public static func == (a: BiometricSDKUIExtensions.PopTipExitAnimation, b: BiometricSDKUIExtensions.PopTipExitAnimation) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PopTipActionAnimation {
+  case bounce(CoreGraphics.CGFloat?)
+  case float(offsetX: CoreGraphics.CGFloat?, offsetY: CoreGraphics.CGFloat?)
+  case pulse(CoreGraphics.CGFloat?)
+  case none
+}
+@objc open class PopTip : UIKit.UIView {
+  open var text: Swift.String? {
+    get
+    set
+  }
+  open var font: UIKit.UIFont
+  @objc dynamic open var textColor: UIKit.UIColor
+  @objc dynamic open var textAlignment: UIKit.NSTextAlignment
+  @objc dynamic open var bubbleColor: UIKit.UIColor
+  @objc dynamic open var borderColor: UIKit.UIColor
+  @objc dynamic open var borderWidth: CoreGraphics.CGFloat
+  @objc dynamic open var cornerRadius: CoreGraphics.CGFloat
+  @objc dynamic open var isRounded: Swift.Bool
+  @objc dynamic open var shadowColor: UIKit.UIColor
+  @objc dynamic open var shadowOffset: CoreGraphics.CGSize
+  @objc dynamic open var shadowRadius: Swift.Float
+  @objc dynamic open var shadowOpacity: Swift.Float
+  @objc dynamic open var offset: CoreGraphics.CGFloat
+  @objc dynamic open var padding: CoreGraphics.CGFloat
+  @objc dynamic open var edgeInsets: UIKit.UIEdgeInsets
+  @objc dynamic open var arrowSize: CoreGraphics.CGSize
+  @objc dynamic open var arrowRadius: CoreGraphics.CGFloat
+  @objc dynamic open var animationIn: Foundation.TimeInterval
+  @objc dynamic open var animationOut: Foundation.TimeInterval
+  @objc dynamic open var delayIn: Foundation.TimeInterval
+  @objc dynamic open var delayOut: Foundation.TimeInterval
+  open var entranceAnimation: BiometricSDKUIExtensions.PopTipEntranceAnimation
+  open var exitAnimation: BiometricSDKUIExtensions.PopTipExitAnimation
+  open var actionAnimation: BiometricSDKUIExtensions.PopTipActionAnimation
+  @objc dynamic open var actionAnimationIn: Foundation.TimeInterval
+  @objc dynamic open var actionAnimationOut: Foundation.TimeInterval
+  @objc dynamic open var actionDelayIn: Foundation.TimeInterval
+  @objc dynamic open var actionDelayOut: Foundation.TimeInterval
+  @objc dynamic open var edgeMargin: CoreGraphics.CGFloat
+  @objc dynamic open var bubbleOffset: CoreGraphics.CGFloat
+  @objc dynamic open var maskColor: UIKit.UIColor
+  @objc dynamic open var shouldShowMask: Swift.Bool
+  open var from: CoreGraphics.CGRect {
+    get
+    set
+  }
+  open var isVisible: Swift.Bool {
+    get
+  }
+  @objc dynamic open var shouldDismissOnTap: Swift.Bool
+  @objc dynamic open var shouldDismissOnTapOutside: Swift.Bool
+  @objc dynamic open var shouldDismissOnSwipeOutside: Swift.Bool
+  @objc dynamic open var startActionAnimationOnShow: Swift.Bool
+  open var swipeRemoveGestureDirection: UIKit.UISwipeGestureRecognizer.Direction {
+    get
+    set
+  }
+  open var tapHandler: ((BiometricSDKUIExtensions.PopTip) -> Swift.Void)?
+  open var tapOutsideHandler: ((BiometricSDKUIExtensions.PopTip) -> Swift.Void)?
+  open var swipeOutsideHandler: ((BiometricSDKUIExtensions.PopTip) -> Swift.Void)?
+  open var appearHandler: ((BiometricSDKUIExtensions.PopTip) -> Swift.Void)?
+  open var dismissHandler: ((BiometricSDKUIExtensions.PopTip) -> Swift.Void)?
+  open var entranceAnimationHandler: ((@escaping () -> Swift.Void) -> Swift.Void)?
+  open var exitAnimationHandler: ((@escaping () -> Swift.Void) -> Swift.Void)?
+  open var arrowPosition: CoreGraphics.CGPoint {
+    get
+    }
+  weak open var containerView: UIKit.UIView? {
+    get
+    }
+  open var direction: BiometricSDKUIExtensions.PopTipDirection {
+    get
+    }
+  open var isAnimating: Swift.Bool {
+    get
+    }
+  open var backgroundMask: UIKit.UIView? {
+    get
+    }
+  open var tapGestureRecognizer: UIKit.UITapGestureRecognizer? {
+    get
+    }
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  open func show(text: Swift.String, direction: BiometricSDKUIExtensions.PopTipDirection, maxWidth: CoreGraphics.CGFloat, in view: UIKit.UIView, from frame: CoreGraphics.CGRect, duration: Foundation.TimeInterval? = nil)
+  open func show(attributedText: Foundation.NSAttributedString, direction: BiometricSDKUIExtensions.PopTipDirection, maxWidth: CoreGraphics.CGFloat, in view: UIKit.UIView, from frame: CoreGraphics.CGRect, duration: Foundation.TimeInterval? = nil)
+  open func show(customView: UIKit.UIView, direction: BiometricSDKUIExtensions.PopTipDirection, in view: UIKit.UIView, from frame: CoreGraphics.CGRect, duration: Foundation.TimeInterval? = nil)
+  open func update(text: Swift.String)
+  open func update(attributedText: Foundation.NSAttributedString)
+  open func update(customView: UIKit.UIView)
+  @objc open func hide(forced: Swift.Bool = false)
+  open func startActionAnimation()
+  open func stopActionAnimation(_ completion: (() -> Swift.Void)? = nil)
+  @objc deinit
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension PopTip {
+  public class func pathWith(rect: CoreGraphics.CGRect, frame: CoreGraphics.CGRect, direction: BiometricSDKUIExtensions.PopTipDirection, arrowSize: CoreGraphics.CGSize, arrowPosition: CoreGraphics.CGPoint, arrowRadius: CoreGraphics.CGFloat, borderWidth: CoreGraphics.CGFloat = 0, radius: CoreGraphics.CGFloat = 0) -> UIKit.UIBezierPath
+}
+@objc(BIOJoinThePointsChallengeViewController) public class JoinThePointsChallengeViewController : BiometricSDKUIExtensions.GenericChallengeViewController {
+  @objc public var targetsNumber: Swift.UInt {
+    @objc get
+    @objc set
+  }
+  @objc public var previewBlurEffectStrongness: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc public var overlayFrameVisible: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension UIViewController {
+  @objc public static func `default`() -> Self
+}
+extension UIView {
+  @objc public static func `default`() -> Self
+}
+extension BiometricSDKUIExtensions.PopupDirection : Swift.Equatable {}
+extension BiometricSDKUIExtensions.PopupDirection : Swift.Hashable {}
+extension BiometricSDKUIExtensions.PopupDirection : Swift.RawRepresentable {}
+extension BiometricSDKUIExtensions.PopTipDirection : Swift.Equatable {}
+extension BiometricSDKUIExtensions.PopTipDirection : Swift.Hashable {}
+extension BiometricSDKUIExtensions.PopTipEntranceAnimation : Swift.Equatable {}
+extension BiometricSDKUIExtensions.PopTipEntranceAnimation : Swift.Hashable {}
+extension BiometricSDKUIExtensions.PopTipExitAnimation : Swift.Equatable {}
+extension BiometricSDKUIExtensions.PopTipExitAnimation : Swift.Hashable {}

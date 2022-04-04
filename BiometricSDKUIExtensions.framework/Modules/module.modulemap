@@ -1,0 +1,11 @@
+framework module BiometricSDKUIExtensions {
+  umbrella header "BiometricSDKUIExtensions.h"
+
+  export *
+  module * { export * }
+}
+
+module BiometricSDKUIExtensions.Swift {
+    header "BiometricSDKUIExtensions-Swift.h"
+    requires objc
+}
